@@ -26,7 +26,6 @@ object DataFrameApp {
     peopleDF.filter(peopleDF.col("age")>19).show()
 
 
-
     spark.stop()
 
   }
