@@ -12,7 +12,7 @@ object DataFrameCase {
   def main(args: Array[String]): Unit = {
     val spark = SparkSession.builder().appName("DataFrameCase").master("local").getOrCreate()
     //rdd --> dateFarme
-    val rdd = spark.sparkContext.textFile("D:\\IdeaWorkSpaces\\spark01\\src\\main\\resources\\1.txt")
+    val rdd = spark.sparkContext.textFile("src/main/resources/1.txt")
     //导入隐式转换
     import spark.implicits._
     val studentDF = rdd.map(_.split("\\|")).map(line => Sutdent(line(0).toInt, line(1), line(2),line(3))).toDF()
