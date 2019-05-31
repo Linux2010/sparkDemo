@@ -26,4 +26,32 @@ object DataFarmeRDDApp {
     spark.stop()
   }
   case class Info(id:Int,name:String,age: Int)
+
+
+//  private def runProgrammaticSchemaExample(spark:SparkSession): Unit ={
+//    // 1.转成RDD
+//    val rdd = spark.sparkContext.textFile("E:/大数据/data/people.txt")
+//
+//    // 2.定义schema，带有StructType的
+//    // 定义schema信息
+//    val schemaString = "name age"
+//    // 对schema信息按空格进行分割
+//    // 最终fileds里包含了2个StructField
+//    val fields = schemaString.split(" ")
+//      // 字段类型，字段名称判断是不是为空
+//      .map(fieldName => StructField(fieldName, StringType, nullable = true))
+//    val schema = StructType(fields)
+//
+//    // 3.把我们的schema信息作用到RDD上
+//    //   这个RDD里面包含了一些行
+//    // 形成Row类型的RDD
+//    val rowRDD = rdd.map(_.split(","))
+//      .map(x => Row(x(0), x(1).trim))
+//    // 通过SparkSession创建一个DataFrame
+//    // 传进来一个rowRDD和schema，将schema作用到rowRDD上
+//    val peopleDF = spark.createDataFrame(rowRDD, schema)
+//
+//    peopleDF.show()
+//  }
+
 }
