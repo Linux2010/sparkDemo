@@ -1,4 +1,4 @@
-package cn.com.yusys.IO;
+package cn.com.yusys.sql;
 
 /**
  * @author 94946

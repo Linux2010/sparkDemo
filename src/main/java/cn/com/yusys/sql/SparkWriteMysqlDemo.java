@@ -1,4 +1,4 @@
-package cn.com.yusys.IO;
+package cn.com.yusys.sql;
 
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;

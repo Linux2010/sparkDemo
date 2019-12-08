@@ -1,4 +1,4 @@
-package cn.com.yusys.IO;
+package cn.com.yusys.sql;
 
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
@@ -13,8 +13,8 @@ public class SparkReadOracleDemo {
 
     public static void main(String[] args) {
         //Windows下建运行项目的时候会加载hadoop的内容，这里配置了个windows版的
-        System.setProperty("hadoop.home.dir", "D:\\hadoopbin\\");
-        String master = "local";
+        //System.setProperty("hadoop.home.dir", "D:\\hadoopbin\\");
+        String master = "local[*]";
         String appName = "SparkJdbcDemo";
         SparkSession spark = SparkSession
                 .builder()
