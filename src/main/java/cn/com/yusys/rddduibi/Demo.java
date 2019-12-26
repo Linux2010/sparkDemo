@@ -29,12 +29,12 @@ import java.util.stream.Collectors;
 
 public class Demo {
   public static void main(String[] args) {
-    SparkConf conf = new SparkConf().setAppName("test").setMaster("local");
+    SparkConf conf = new SparkConf().setAppName("test").setMaster("local[*]");
     JavaSparkContext sc = new JavaSparkContext(conf);
 
-    JavaRDD<String> rdd1 = sc.parallelize(Arrays.asList("123b","123c","123d","sdfe234"));
+    JavaRDD<String> rdd1 = sc.parallelize(Arrays.asList("123b","123c","123a","234f"));
 
-    JavaRDD<String> rdd2 = sc.parallelize(Arrays.asList("123b","123C","asdffff","123B"));
+    JavaRDD<String> rdd2 = sc.parallelize(Arrays.asList("123b","ddff","asdf","sdf1"));
 
     JavaPairRDD<Integer, Iterable<String>> pairRDD1 = rdd1.groupBy(new Function<String, Integer>() {
       @Override
@@ -77,25 +77,28 @@ public class Demo {
           for (int i = m; i < list1.size(); i++) {
             if (list1.get(i).compareTo(list2.get(j)) < 0) {
               //
-              returnList.add("1insert::" + list1.get(i));
+              returnList.add("insert::" + list1.get(i));
               m = i + 1;
+              if(m==size1){
+                returnList.add("delete::"+list2.get(j));
+              }
             } else if (list1.get(i).compareTo(list2.get(j)) == 0) {
               //returnList.add("update:" + list1.get(i));
               m = i + 1;
               break;
             } else {
-              returnList.add("2delete::" + list2.get(j));
+              returnList.add("delete::" + list2.get(j));
               m = i;
               break;
             }
           }
         } else {
-          returnList.add("3delete::" + list2.get(j));
+          returnList.add("delete::" + list2.get(j));
         }
       }
       //
       for (int i = m; i < list1.size(); i++) {
-        returnList.add("4insert::" + list1.get(i));
+        returnList.add("insert::" + list1.get(i));
       }
       return returnList;
     });

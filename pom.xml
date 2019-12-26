@@ -57,6 +57,7 @@
             <artifactId>spark-mllib_${scala.version}</artifactId>
             <version>${spark.version}</version>
         </dependency>
+<!--
 
         <dependency>
             <groupId>org.apache.hadoop</groupId>
@@ -90,6 +91,7 @@
             <version>1.4.3</version>
             <type>pom</type>
         </dependency>
+-->
 
 
     </dependencies>
